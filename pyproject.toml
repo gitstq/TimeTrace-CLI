@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "timetrace-cli"
+version = "1.0.0"
+description = "Lightweight Terminal HTTP Request Timing Analysis & Visualization Engine"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.8"
+authors = [
+    {name = "TimeTrace Team", email = "timetrace@example.com"}
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Software Development :: Testing",
+    "Topic :: System :: Networking :: Monitoring",
+    "Topic :: Terminals",
+    "Topic :: Utilities",
+]
+keywords = [
+    "http", "timing", "performance", "analysis", "cli", "terminal",
+    "network", "monitoring", "debugging", "api-testing", "devtools",
+    "waterfall", "latency", "response-time", "ttfb", "dns",
+]
+
+[project.scripts]
+timetrace = "timetrace.main:main"
+
+[project.urls]
+Homepage = "https://github.com/gitstq/TimeTrace-CLI"
+Documentation = "https://github.com/gitstq/TimeTrace-CLI#readme"
+Repository = "https://github.com/gitstq/TimeTrace-CLI.git"
+Issues = "https://github.com/gitstq/TimeTrace-CLI/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["timetrace*"]
+
+[tool.black]
+line-length = 100
+target-version = ['py38', 'py39', 'py310', 'py311', 'py312']
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --cov=timetrace --cov-report=term-missing"
